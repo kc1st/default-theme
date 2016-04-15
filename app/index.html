@@ -100,42 +100,42 @@
             </md-button>
 
         </md-fab-trigger>
-        <div class="new-match-fab2">
-            <md-fab-actions>
-                <md-button class="md-fab md-raised md-mini" ng-click="main.shareInviteLink({takePrintscreen: false, link: true, image: false, message: false, subject: false})">
-                    <md-tooltip md-direction="left" >
-                        {{ 'MAIN_SHARE_INVITE_LINK_TITLE' | translate }}
-                    </md-tooltip>
-                    <md-icon class="material-icons">share</md-icon>
-                </md-button>
-                <md-button class="md-fab md-raised md-mini" ng-click="main.changePage('/inviteFriends')">
-                    <md-tooltip md-direction="left" >
-                        {{ 'MAIN_INVITE_FRIENDS_TITLE' | translate }}
-                    </md-tooltip>
-                    <md-icon class="material-icons">person_pin</md-icon>
-                </md-button>
-                <md-button aria-label="onedevice" class="md-fab md-raised md-mini" ng-click="main.newSinglePlayer('passAndPlay')">
-                    <md-tooltip md-direction="left" >
-                        {{ 'MAIN_PASS_AND_PLAY_TITLE' | translate }}
-                    </md-tooltip>
-                    <md-icon class="material-icons">smartphone</md-icon>
-                </md-button>
-                <md-button class="md-fab md-raised md-mini" ng-click="main.newSinglePlayer('practice')">
-                    <md-tooltip md-direction="left" >
-                        {{ 'MAIN_PRACTICE_TITLE' | translate }}
-                    </md-tooltip>
-                    <md-icon class="material-icons">person</md-icon>
-                </md-button>
-                <md-button aria-label="random" class="md-fab md-raised md-mini" ng-click="main.newMultiplayerAutoMatch()">
-                    <md-tooltip md-direction="left">
-                        {{ 'MAIN_NEW_AUTO_MATCH_TITLE' | translate }}
-                    </md-tooltip>
-                    <md-icon class="material-icons">shuffle</md-icon>
-                </md-button>
-            </md-fab-actions>
+    </div>
+    <div class="new-match-fab2">
+        <md-fab-actions>
+            <md-button class="md-fab md-raised md-mini" ng-click="main.shareInviteLink({takePrintscreen: false, link: true, image: false, message: false, subject: false})">
+                <md-tooltip md-direction="left" >
+                    {{ 'MAIN_SHARE_INVITE_LINK_TITLE' | translate }}
+                </md-tooltip>
+                <md-icon class="material-icons">share</md-icon>
             </md-button>
+            <md-button class="md-fab md-raised md-mini" ng-click="main.changePage('/inviteFriends')">
+                <md-tooltip md-direction="left" >
+                    {{ 'MAIN_INVITE_FRIENDS_TITLE' | translate }}
+                </md-tooltip>
+                <md-icon class="material-icons">person_pin</md-icon>
+            </md-button>
+            <md-button aria-label="onedevice" class="md-fab md-raised md-mini" ng-click="main.newSinglePlayer('passAndPlay')">
+                <md-tooltip md-direction="left" >
+                    {{ 'MAIN_PASS_AND_PLAY_TITLE' | translate }}
+                </md-tooltip>
+                <md-icon class="material-icons">smartphone</md-icon>
+            </md-button>
+            <md-button class="md-fab md-raised md-mini" ng-click="main.newSinglePlayer('practice')">
+                <md-tooltip md-direction="left" >
+                    {{ 'MAIN_PRACTICE_TITLE' | translate }}
+                </md-tooltip>
+                <md-icon class="material-icons">person</md-icon>
+            </md-button>
+            <md-button aria-label="random" class="md-fab md-raised md-mini" ng-click="main.newMultiplayerAutoMatch()">
+                <md-tooltip md-direction="left">
+                    {{ 'MAIN_NEW_AUTO_MATCH_TITLE' | translate }}
+                </md-tooltip>
+                <md-icon class="material-icons">shuffle</md-icon>
+            </md-button>
+        </md-fab-actions>
+    </div>
 </md-fab-speed-dial>
-</div>
 </script>
 
 
