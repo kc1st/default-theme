@@ -107,8 +107,8 @@ module.exports = function(grunt) {
   grunt.registerTask('default', [
       'ts',
       'postcss',
-      'manifest:forTesting',
-      'http-server', 'protractor',
+    //   'manifest:forTesting',
+    //   'http-server', 'protractor',
       'manifest:forProduction']);
   grunt.registerTask('skipProtractor', ['ts',
       'postcss',

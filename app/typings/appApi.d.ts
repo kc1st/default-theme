@@ -2,7 +2,6 @@ declare namespace gamingPlatform {
 // One and only global object is: gamingPlatform.main (also accessible via $rootScope.main)
 // Only methods that return void have side-effects (all other methods are getters, with no side-effects).
 var main: api.App;
-
 namespace api {
 
 interface App {

@@ -15,7 +15,8 @@
   <!-- CSS for material design -->
   <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
-
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  
 <script type="text/ng-template" id="html-templates/mainPage.html">
 <div class="box max_height">
   <div class="box_header">
@@ -27,73 +28,113 @@
       </div>
     </div>
   </div>
-  <div class="overflow-y-scroll max_height">
-    <div class="box_content max_height">
-      <div ng-if="main.yourTurnMatches().length">
-        <div class="card-group-title">{{ 'MAIN_MATCH_GROUP_YOUR_TURN_MATCHES' | translate }}</div>
-        <div class="card-group">
-          <div class="match"
-              ng-repeat="match in main.yourTurnMatches() track by match.getMatchId()">
-            <div class="top" ng-click="match.load()">
-              <div class="subtitle">{{ 'MAIN_MATCH_LAST_MOVE_ON' | translate }} <span class="short-date-fixed-width">{{match.updatedTime() | date:'short'}}</span></div>
-              <div class="subtitle">{{ 'MAIN_MATCH_STARTED_ON' | translate }} <span class="short-date-fixed-width">{{match.createdTime() | date:'short'}}</span></div>
+<!--<div class="overflow-y-scroll max_height">
+<div class="box_content max_height">-->
+<md-content class="md-content-my max_height">
+    <md-tabs class="max_height" md-swipe-content md-border-bottom>
+        <md-tab label="{{ 'MAIN_MATCH_GROUP_YOUR_TURN_MATCHES' | translate }}">
+            <div ng-if="main.yourTurnMatches().length">
+                <div class="card-group">
+                <div class="match"
+                    ng-repeat="match in main.yourTurnMatches() track by match.getMatchId()">
+                    <div class="top" ng-click="match.load()">
+                    <div class="subtitle">{{ 'MAIN_MATCH_LAST_MOVE_ON' | translate }} <span class="short-date-fixed-width">{{match.updatedTime() | date:'short'}}</span></div>
+                    <div class="subtitle">{{ 'MAIN_MATCH_STARTED_ON' | translate }} <span class="short-date-fixed-width">{{match.createdTime() | date:'short'}}</span></div>
+                    </div>
+                    <div class="img-container">
+                    <img alt="Player avatar" ng-class="{img: true}"
+                        ng-repeat="player in match.getPlayers({limit:1, excludeMe: true})"
+                        ng-src="{{player.getAvatarImage()}}"
+                        ng-click="main.showPlayerInfoModal(player, match)">
+                    </div>
+                </div>
+                </div>
             </div>
-            <div class="img-container">
-              <img alt="Player avatar" ng-class="{img: true}"
-                  ng-repeat="player in match.getPlayers({limit:1, excludeMe: true})"
-                  ng-src="{{player.getAvatarImage()}}"
-                  ng-click="main.showPlayerInfoModal(player, match)">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div ng-if="main.opponentTurnMatches().length">
-        <div class="card-group-title">{{ 'MAIN_MATCH_GROUP_OPPONENT_TURN_MATCHES' | translate }}</div>
-        <div class="card-group">
-          <div class="match"
-              ng-repeat="match in main.opponentTurnMatches() track by match.getMatchId()">
-            <div class="top" ng-click="match.load()">
-              <div class="subtitle">{{ 'MAIN_MATCH_LAST_MOVE_ON' | translate }} <span class="short-date-fixed-width">{{match.updatedTime() | date:'short'}}</span></div>
-              <div class="subtitle">{{ 'MAIN_MATCH_STARTED_ON' | translate }} <span class="short-date-fixed-width">{{match.createdTime() | date:'short'}}</span></div>
-            </div>
-            <div class="img-container">
-              <img alt="Player avatar" ng-class="{img: true}"
-                  ng-repeat="player in match.getPlayers({limit:1, excludeMe: true})"
-                  ng-src="{{player.getAvatarImage()}}"
-                  ng-click="main.showPlayerInfoModal(player, match)">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div ng-if="main.endedMatches().length">
-        <div class="card-group-title">{{ 'MAIN_MATCH_GROUP_ENDED_MATCHES' | translate }}</div>
-        <div class="card-group">
-          <div class="match"
-              ng-repeat="match in main.endedMatches() track by match.getMatchId()">
-            <div class="top" ng-click="match.load()">
-              <div class="title">{{match.getMatchStatusText({showDisplayName:false})}}</div>
-              <div class="subtitle">{{ 'MAIN_MATCH_LAST_MOVE_ON' | translate }} <span class="short-date-fixed-width">{{match.updatedTime() | date:'short'}}</span></div>
-            </div>
-            <div class="img-container">
-              <img alt="Player avatar" ng-class="{img: true}"
-                  ng-repeat="player in match.getPlayers({limit:1, excludeMe: true})"
-                  ng-src="{{player.getAvatarImage()}}"
-                  ng-click="main.showPlayerInfoModal(player, match)">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        </md-tab>
+        <md-tab class="max_height" label="{{ 'MAIN_MATCH_GROUP_OPPONENT_TURN_MATCHES' | translate }}">
+            <div ng-if="main.opponentTurnMatches().length">
+                <div class="card-group">
+                <div class="match"
+                    ng-repeat="match in main.opponentTurnMatches() track by match.getMatchId()">
+                    <div class="top" ng-click="match.load()">
+                    <div class="subtitle">{{ 'MAIN_MATCH_LAST_MOVE_ON' | translate }} <span class="short-date-fixed-width">{{match.updatedTime() | date:'short'}}</span></div>
+                    <div class="subtitle">{{ 'MAIN_MATCH_STARTED_ON' | translate }} <span class="short-date-fixed-width">{{match.createdTime() | date:'short'}}</span></div>
+                    </div>
+                    <div class="img-container">
+                    <img alt="Player avatar" ng-class="{img: true}"
+                        ng-repeat="player in match.getPlayers({limit:1, excludeMe: true})"
+                        ng-src="{{player.getAvatarImage()}}"
+                        ng-click="main.showPlayerInfoModal(player, match)">
+                    </div>
+                </div>
+                </div>
+            </div>                
+        </md-tab>
+        <md-tab label="{{ 'MAIN_MATCH_GROUP_ENDED_MATCHES' | translate }}">
+            <div ng-if="main.endedMatches().length">
+                <div class="card-group">
+                <div class="match"
+                    ng-repeat="match in main.endedMatches() track by match.getMatchId()">
+                    <div class="top" ng-click="match.load()">
+                    <div class="title">{{match.getMatchStatusText({showDisplayName:false})}}</div>
+                    <div class="subtitle">{{ 'MAIN_MATCH_LAST_MOVE_ON' | translate }} <span class="short-date-fixed-width">{{match.updatedTime() | date:'short'}}</span></div>
+                    </div>
+                    <div class="img-container">
+                    <img alt="Player avatar" ng-class="{img: true}"
+                        ng-repeat="player in match.getPlayers({limit:1, excludeMe: true})"
+                        ng-src="{{player.getAvatarImage()}}"
+                        ng-click="main.showPlayerInfoModal(player, match)">
+                    </div>
+                </div>
+                </div>
+            </div>                
+        </md-tab>
+    </md-tabs>
+</md-content>
 </div>
-<div class="new-match-fab">
-  <md-button id="test_open_new_match_modal" class="md-fab new-match-fab" aria-label="FAB"
-      ng-click="main.showModal('newMatchModal')">
-    <md-tooltip md-direction="left">
-      {{ 'MAIN_NEW_MATCH_GROUP_TITLE' | translate }}
-    </md-tooltip>
-    <span style="font-size: 28px;">+</span>
-  </md-button>
+<md-fab-speed-dial class="md-scale" md-direction="up">
+    <div class="new-match-fab">
+        <md-fab-trigger>
+            <md-button id="test_open_new_match_modal" class="md-fab md-warn new-match-fab" aria-label="FAB">
+                <md-icon class="material-icons">apps</md-icon>
+            </md-button>
+
+        </md-fab-trigger>
+        <div class="new-match-fab2">
+            <md-fab-actions>
+                <md-button class="md-fab md-raised md-mini" ng-click="main.shareInviteLink({takePrintscreen: false, link: true, image: false, message: false, subject: false})">
+                    <md-tooltip md-direction="left" >
+                        {{ 'MAIN_SHARE_INVITE_LINK_TITLE' | translate }}
+                    </md-tooltip>
+                    <md-icon class="material-icons">share</md-icon>
+                </md-button>
+                <md-button class="md-fab md-raised md-mini" ng-click="main.changePage('/inviteFriends')">
+                    <md-tooltip md-direction="left" >
+                        {{ 'MAIN_INVITE_FRIENDS_TITLE' | translate }}
+                    </md-tooltip>
+                    <md-icon class="material-icons">person_pin</md-icon>
+                </md-button>
+                <md-button aria-label="onedevice" class="md-fab md-raised md-mini" ng-click="main.newSinglePlayer('passAndPlay')">
+                    <md-tooltip md-direction="left" >
+                        {{ 'MAIN_PASS_AND_PLAY_TITLE' | translate }}
+                    </md-tooltip>
+                    <md-icon class="material-icons">smartphone</md-icon>
+                </md-button>
+                <md-button class="md-fab md-raised md-mini" ng-click="main.newSinglePlayer('practice')">
+                    <md-tooltip md-direction="left" >
+                        {{ 'MAIN_PRACTICE_TITLE' | translate }}
+                    </md-tooltip>
+                    <md-icon class="material-icons">person</md-icon>
+                </md-button>
+                <md-button aria-label="random" class="md-fab md-raised md-mini" ng-click="main.newMultiplayerAutoMatch()">
+                    <md-tooltip md-direction="left">
+                        {{ 'MAIN_NEW_AUTO_MATCH_TITLE' | translate }}
+                    </md-tooltip>
+                    <md-icon class="material-icons">shuffle</md-icon>
+                </md-button>
+            </md-fab-actions>
+            </md-button>
+</md-fab-speed-dial>
 </div>
 </script>
 
@@ -224,7 +265,7 @@
       <div class="new-match-fab">
         <md-button id="test_extra_match_options_open_new_match_modal" class="md-fab new-match-fab" aria-label="FAB"
             ng-click="main.showModal('newMatchModal')">
-          <md-tooltip md-direction="left">
+          <md-tooltip md-direction="right">
             {{ 'MAIN_NEW_MATCH_GROUP_TITLE' | translate }}
           </md-tooltip>
           <span style="font-size: 28px;">+</span>
