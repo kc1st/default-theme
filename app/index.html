@@ -92,50 +92,54 @@
     </md-tabs>
 </md-content>
 </div>
-<md-fab-speed-dial class="md-scale" md-direction="up">
-    <div class="new-match-fab">
-        <md-fab-trigger>
-            <md-button id="test_open_new_match_modal" class="md-fab md-warn new-match-fab" aria-label="FAB">
-                <md-icon class="material-icons">apps</md-icon>
-            </md-button>
 
-        </md-fab-trigger>
-    </div>
-    <div class="new-match-fab2">
-        <md-fab-actions>
-            <md-button class="md-fab md-raised md-mini" ng-click="main.shareInviteLink({takePrintscreen: false, link: true, image: false, message: false, subject: false})">
-                <md-tooltip md-direction="left" >
-                    {{ 'MAIN_SHARE_INVITE_LINK_TITLE' | translate }}
-                </md-tooltip>
-                <md-icon class="material-icons">share</md-icon>
-            </md-button>
-            <md-button class="md-fab md-raised md-mini" ng-click="main.changePage('/inviteFriends')">
-                <md-tooltip md-direction="left" >
-                    {{ 'MAIN_INVITE_FRIENDS_TITLE' | translate }}
-                </md-tooltip>
-                <md-icon class="material-icons">person_pin</md-icon>
-            </md-button>
-            <md-button aria-label="onedevice" class="md-fab md-raised md-mini" ng-click="main.newSinglePlayer('passAndPlay')">
-                <md-tooltip md-direction="left" >
-                    {{ 'MAIN_PASS_AND_PLAY_TITLE' | translate }}
-                </md-tooltip>
-                <md-icon class="material-icons">smartphone</md-icon>
-            </md-button>
-            <md-button class="md-fab md-raised md-mini" ng-click="main.newSinglePlayer('practice')">
-                <md-tooltip md-direction="left" >
-                    {{ 'MAIN_PRACTICE_TITLE' | translate }}
-                </md-tooltip>
-                <md-icon class="material-icons">person</md-icon>
-            </md-button>
-            <md-button aria-label="random" class="md-fab md-raised md-mini" ng-click="main.newMultiplayerAutoMatch()">
-                <md-tooltip md-direction="left">
+
+
+
+<div class="new-match-fab">
+    <md-menu>
+        <md-button ng-click="$mdOpenMenu($event)" id="test_open_new_match_modal" class="md-fab md-warn new-match-fab" aria-label="FAB">
+            <md-icon class="material-icons">apps</md-icon>
+        </md-button>
+
+        <md-menu-content>
+            <md-menu-item>
+                <md-button ng-click="main.newMultiplayerAutoMatch()">
+                    <md-icon class="material-icons">shuffle</md-icon>
                     {{ 'MAIN_NEW_AUTO_MATCH_TITLE' | translate }}
-                </md-tooltip>
-                <md-icon class="material-icons">shuffle</md-icon>
-            </md-button>
-        </md-fab-actions>
-    </div>
-</md-fab-speed-dial>
+                </md-button>
+            </md-menu-item>
+            
+            <md-menu-item>
+                <md-button ng-click="main.newSinglePlayer('practice')">
+                    <md-icon class="material-icons">person</md-icon>
+                    {{ 'MAIN_PRACTICE_TITLE' | translate }}
+                </md-button>
+            </md-menu-item>
+            
+            <md-menu-item>
+                <md-button ng-click="main.newSinglePlayer('passAndPlay')">
+                    <md-icon class="material-icons">smartphone</md-icon>
+                    {{ 'MAIN_PASS_AND_PLAY_TITLE' | translate }}
+                </md-button>
+            </md-menu-item>
+            
+            <md-menu-item>
+                <md-button ng-click="main.changePage('/inviteFriends')">
+                    <md-icon class="material-icons">person_pin</md-icon>
+                    {{ 'MAIN_INVITE_FRIENDS_TITLE' | translate }}
+                </md-button>
+            </md-menu-item>
+            
+            <md-menu-item>
+                <md-button ng-click="main.shareInviteLink({takePrintscreen: false, link: true, image: false, message: false, subject: false})">
+                    <md-icon class="material-icons">share</md-icon>
+                    {{ 'MAIN_SHARE_INVITE_LINK_TITLE' | translate }}
+                </md-button>
+            </md-menu-item>
+        </md-menu-content>
+    </md-menu>
+</div>
 </script>
 
 
